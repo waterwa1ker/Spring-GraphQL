@@ -1,10 +1,11 @@
 package com.example.graphql.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Table
 @Entity
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,4 +93,6 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 }

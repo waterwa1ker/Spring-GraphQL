@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -22,9 +23,13 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Optional<Product> findById(long id) {
+        return productRepository.findById(id);
+    }
+
     @Transactional
-    public void save(Product product) {
-        productRepository.save(product);
+    public Product save(Product product) {
+        return productRepository.save(product);
     }
 
 }

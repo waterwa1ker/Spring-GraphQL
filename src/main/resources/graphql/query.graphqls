@@ -1,0 +1,28 @@
+type Product {
+    id: ID!,
+    smiles: String,
+    formula: String,
+    commonName: String,
+    molecularWeight: Float,
+    russianCommonName: String,
+    description: String
+}
+
+input ProductInput {
+    id: ID!,
+    smiles: String,
+    formula: String,
+    commonName: String,
+    molecularWeight: Float,
+    russianCommonName: String,
+    description: String
+}
+
+type Query {
+    getProducts: [Product!]!
+    findById(id: Long): Product
+}
+
+type Mutation {
+    createProduct(product: ProductInput) : Product
+}

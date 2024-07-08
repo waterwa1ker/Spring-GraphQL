@@ -26,6 +26,11 @@ public class CatalogController {
         return productService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Product findById(@PathVariable long id) {
+        return productService.findById(id).orElse(null);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<HttpStatus> createProduct(@RequestBody Product product,
                                                     BindingResult bindingResult) {
