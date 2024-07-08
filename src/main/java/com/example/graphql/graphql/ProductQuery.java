@@ -18,11 +18,11 @@ public class ProductQuery implements GraphQLQueryResolver {
         this.productService = productService;
     }
 
-    public List<Product> getProducts() {
+    public List<Product> products() {
         return productService.findAll();
     }
 
-    public Product findById(long id) {
+    public Product product(long id) {
         return productService.findById(id).orElse(null);
     }
 }
