@@ -19,8 +19,8 @@ input ProductInput {
 }
 
 type Query {
-    getProducts: [Product!]!
-    findById(id: Long): Product
+    products: [Product!]!
+    product(id: Long): Product
 }
 
 type Mutation {
