@@ -76,3 +76,47 @@ query {
 ```
 
 Очевидно, что это удобная вещь, которая помогает не создавать ненужные методы или POJO классы.
+
+## Manual GraphQL
+
+Есть два способа взаимодействия Spring & GraphQL:
+
+- с помощью .graphqls файла
+- с помощью аннотаций, используя [spqr](https://github.com/leangen/graphql-spqr?tab=readme-ov-file)
+
+Начнем с .graphqls файла:
+
+```
+type Product {
+    id: ID!
+    smiles: String
+    formula: String
+    commonName: String
+    molecularWeight: Float
+    russianCommonName: String
+    description: String
+}
+
+input ProductDTO {
+    smiles: String
+    formula: String
+    commonName: String
+    molecularWeight: Float
+    russianCommonName: String
+    description: String
+}
+
+type Query {
+    products: [Product]!
+    product(id: ID!) : Product
+}
+
+type Mutation {
+    addProduct(productDTO: ProductDTO!) : Product
+}
+```
+
+Здесь мы описываем наши сущности, взаимодействия с ними.
+
+Query - запросы, при которых мы никак не меняем БД (аналог GET запроса).
+Mutation - аналог POST/PUT/PATCH запросов.
